@@ -17,14 +17,12 @@ import java.util.Map;
 @Controller
 public class LoginController {
 
-    @RequestMapping(value ="/user/login",method = RequestMethod.POST,produces = "text/html;charset=UTF-8" )
+    @RequestMapping(value ="/user/login",produces = "text/html;charset=UTF-8" )
     public String login(@RequestParam("username")String username,
                         @RequestParam("password")String password,
-                        Map<String,Object> map,
-                        HttpSession session){
+                        Map<String,Object> map){
         if(!StringUtils.isEmpty(username) && "123456".equals(password)){
             //登录成功,防止重复提交
-            session.setAttribute("loginUser", username);
             return "dashboard";
         }else{
             map.put("msg", "用户名密码错误");
