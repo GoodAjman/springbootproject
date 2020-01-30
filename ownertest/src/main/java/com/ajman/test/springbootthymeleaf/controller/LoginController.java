@@ -17,7 +17,7 @@ import java.util.Map;
 @Controller
 public class LoginController {
 
-    @RequestMapping(value ="/user/login",produces = "text/html;charset=UTF-8" )
+    @RequestMapping(value ="/user/login",method = RequestMethod.POST,produces = "text/html;charset=UTF-8" )
     public String login(@RequestParam("username")String username,
                         @RequestParam("password")String password,
                         Map<String,Object> map){

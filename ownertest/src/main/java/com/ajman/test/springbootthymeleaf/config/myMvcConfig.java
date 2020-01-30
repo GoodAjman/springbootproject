@@ -1,13 +1,12 @@
 package com.ajman.test.springbootthymeleaf.config;
 
-import com.ajman.test.springbootthymeleaf.component.MyLocalResolver;
+import com.ajman.test.springbootthymeleaf.component.MyLocaleResolver;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+
 
 /**
  * @Author keny
@@ -20,7 +19,10 @@ public class myMvcConfig implements WebMvcConfigurer {
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/ajman").setViewName("success");
         registry.addViewController("/login").setViewName("login");
+        registry.addViewController("/").setViewName("login");
     }
-
-
+    @Bean(name="localeResolver")
+    public LocaleResolver localeResolver(){
+        return new MyLocaleResolver();
+    }
 }
